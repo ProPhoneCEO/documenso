@@ -6,7 +6,6 @@ PORT=3000
 CONTAINER_NAME=documenso-prophone
 IMAGE_NAME=documenso/prophone
 DEPLOY_DIR="/var/www/docs"
-DOCKERFILE_DIR="./docker"
 
 cd $DEPLOY_DIR || exit
 
@@ -36,7 +35,7 @@ docker stop $CONTAINER_NAME || true
 docker rm $CONTAINER_NAME || true
 
 echo "🧱 Building Docker image..."
-docker build -t $IMAGE_NAME $DOCKERFILE_DIR
+docker build -t $IMAGE_NAME
 
 echo "🚀 Launching new Docker container..."
 docker run -d \
