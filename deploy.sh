@@ -40,8 +40,11 @@ docker run -d \
   --name $CONTAINER_NAME \
   --restart unless-stopped \
   -p $PORT:80 \
-  -e DATABASE_URL=postgresql://postgres:flow@172.17.0.1:5432/documenso \
   -e NODE_ENV=production \
+  -e DATABASE_URL=postgresql://postgres:flow@172.17.0.1:5432/documenso \
+  -e NEXT_PRIVATE_DATABASE_URL=postgresql://postgres:flow@172.17.0.1:5432/documenso \
+  -e NEXT_PRIVATE_DIRECT_DATABASE_URL=postgresql://postgres:flow@172.17.0.1:5432/documenso \
   $IMAGE_NAME
+
 
 echo "✅ Deployment complete! App should be live on port $PORT."
