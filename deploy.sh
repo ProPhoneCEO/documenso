@@ -39,11 +39,12 @@ echo "🚀 Launching new Docker container..."
 docker run -d \
   --name $CONTAINER_NAME \
   --restart unless-stopped \
-  -p $PORT:80 \
+  -p $PORT:3000 \
   -e NODE_ENV=production \
   -e DATABASE_URL=postgresql://postgres:flow@172.17.0.1:5432/documenso \
   -e NEXT_PRIVATE_DATABASE_URL=postgresql://postgres:flow@172.17.0.1:5432/documenso \
   -e NEXT_PRIVATE_DIRECT_DATABASE_URL=postgresql://postgres:flow@172.17.0.1:5432/documenso \
+  -e NEXTAUTH_SECRET="699a8e6679df5d4aa19992b67474ab9f7117f7c58aeaa9def54b06f4b431c56c"
   $IMAGE_NAME
 
 
