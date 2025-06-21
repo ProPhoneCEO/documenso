@@ -6,7 +6,7 @@ PORT=3000
 CONTAINER_NAME=documenso-prophone
 IMAGE_NAME=documenso/prophone
 DEPLOY_DIR="/var/www/docs"
-DOCKERFILE_DIR="."  # Change if your Dockerfile is in a subfolder
+DOCKERFILE_DIR="./docker"
 
 cd $DEPLOY_DIR || exit
 
