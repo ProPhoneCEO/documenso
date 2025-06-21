@@ -44,7 +44,7 @@ docker run -d \
   --name $CONTAINER_NAME \
   --restart unless-stopped \
   -p $PORT:3000 \
-  -e DATABASE_URL=postgresql://documenso:yourpassword@localhost:5432/documenso \
+  -e DATABASE_URL=postgresql://postgres:flow@172.17.0.1:5432/documenso \
   -e NODE_ENV=production \
   $IMAGE_NAME
 
