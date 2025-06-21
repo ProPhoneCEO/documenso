@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PORT=3000
 CONTAINER_NAME=documenso-prophone
 IMAGE_NAME=documenso/prophone
@@ -31,7 +33,7 @@ docker stop $CONTAINER_NAME || true
 docker rm $CONTAINER_NAME || true
 
 echo "🧱 Building Docker image..."
-docker build -t $IMAGE_NAME ./docker
+docker build -t $IMAGE_NAME -f ./docker/Dockerfile .
 
 echo "🚀 Launching new Docker container..."
 docker run -d \
