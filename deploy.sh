@@ -6,7 +6,7 @@ set -e
 PORT=3000
 CONTAINER_NAME=documenso-prophone
 IMAGE_NAME=documenso/prophone
-DEPLOY_DIR="/var/www/documenso"
+DEPLOY_DIR="/var/www/docs"
 
 cd $DEPLOY_DIR || exit
 
