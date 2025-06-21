@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Exit on any error
 set -e
 
 PORT=3000
 CONTAINER_NAME=documenso-prophone
 IMAGE_NAME=documenso/prophone
 DEPLOY_DIR="/var/www/docs"
+DOCKERFILE_DIR="."  # Change if your Dockerfile is in a subfolder
 
 cd $DEPLOY_DIR || exit
 
@@ -22,7 +22,6 @@ else
   echo "✅ No changes to commit."
 fi
 
-# Check if port is in use and kill the process if found
 PID=$(lsof -t -i:$PORT || true)
 if [ -n "$PID" ]; then
   echo "⚠️ Port $PORT is in use by PID $PID. Killing it..."
@@ -37,13 +36,13 @@ docker stop $CONTAINER_NAME || true
 docker rm $CONTAINER_NAME || true
 
 echo "🧱 Building Docker image..."
-docker build -t $IMAGE_NAME .
+docker build -t $IMAGE_NAME $DOCKERFILE_DIR
 
 echo "🚀 Launching new Docker container..."
 docker run -d \
   --name $CONTAINER_NAME \
   --restart unless-stopped \
-  -p $PORT:3000 \
+  -p $PORT:80 \
   -e DATABASE_URL=postgresql://postgres:flow@172.17.0.1:5432/documenso \
   -e NODE_ENV=production \
   $IMAGE_NAME
