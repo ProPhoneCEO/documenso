@@ -13,7 +13,7 @@ git pull origin main
 if [[ -n $(git status --porcelain) ]]; then
   echo "💾 Committing local server-side changes..."
   git add .
-  git commit -m 'Server-side updates before deploy'
+  git commit -m "chore: server-side updates before deploy"
   git push origin main
 else
   echo "✅ No changes to commit."
