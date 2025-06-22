@@ -40,6 +40,7 @@ docker run -d \
   --name "$CONTAINER_NAME" \
   --restart unless-stopped \
   -p "$PORT:3000" \
+  --dns 8.8.8.8 --dns 8.8.4.4 \
   --env-file /var/www/docs/.env \
   "$IMAGE_NAME"
 
